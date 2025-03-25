@@ -1,0 +1,81 @@
+is_global = true
+
+# SA0001: XML comment analysis is disabled
+# Disabled because some project don't need documentation
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA0001.md
+dotnet_diagnostic.SA0001.severity = none
+
+# SA1101: Prefix local calls with this
+# No need to use 'this' because of underscore field style
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1101.md
+dotnet_diagnostic.SA1101.severity = none
+
+# SA1133: Each attribute should be placed in its own set of square brackets
+# No need to put each attribute on its own line
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1133.md
+dotnet_diagnostic.SA1133.severity = none
+
+# SA1127: Generic type constraints should be on their own line
+# No need to put constraints on their own line
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1127.md
+dotnet_diagnostic.SA1127.severity = none
+
+# SA1128: Put constructor initializers on their own line
+# No need to put initializers on their own line
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1128.md
+dotnet_diagnostic.SA1128.severity = none
+
+# SA1201: An element within a C# code file is out of order in relation to the other elements in the code.
+# No need to put elements in a specific order
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1201.md
+dotnet_diagnostic.SA1201.severity = none
+
+# SA1202: Members should come before prive members
+# No need to put elements in a specific order
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1202.md
+dotnet_diagnostic.SA1202.severity = none
+
+# SA1204: Static members should appear before instance members
+# No need to put static members before instance members
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1204.md
+dotnet_diagnostic.SA1204.severity = none
+
+# SA1205: Partial elements should declare an access modifier
+# Cannot declare an access modifier on a file level
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1205.md
+dotnet_diagnostic.SA1205.severity = none
+
+# SA1309: Field names should not begin with underscore
+# We use underscore field style
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1309.md
+dotnet_diagnostic.SA1309.severity = none
+
+# SA1402: File may only contain a single type
+# using file make the type scoped to the current file
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1402.md
+dotnet_diagnostic.SA1402.severity = none
+
+# SA1407: Arithmetic expressions should declare precedence
+# No need to declare precedence
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1407.md
+dotnet_diagnostic.SA1407.severity = none
+
+# SA1413: Use trailing comma in multi-line initializers
+# Disabled because is not useful to put a trailing comma at the end of collection, array or enum
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1413.md
+dotnet_diagnostic.SA1413.severity = none
+
+# SA1503: Braces should not be omitted
+# Disabled because is managed by IDE0011 which enforce braces when is multi lines
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1503.md
+dotnet_diagnostic.SA1503.severity = none
+
+# SA1606: Element documentation should have summary text
+# Is a duplicate of RCS1138: https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1138
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1606.md
+dotnet_diagnostic.SA1606.severity = none
+
+# SA1642: Constructor summary documentation must begin with standard text
+# No need to have a standard text.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1642.md
+dotnet_diagnostic.SA1642.severity = none

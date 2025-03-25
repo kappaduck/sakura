@@ -1,0 +1,48 @@
+# Common rules
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# C# project files
+
+[*.csproj]
+indent_size = 2
+
+# Configuration files
+
+[*.{config,nuspec,props,targets,xml}]
+indent_size = 2
+
+# JSON files
+
+[*.json]
+indent_size = 2
+
+# YAML files
+
+[*.{yaml,yml}]
+indent_size = 2
+
+# Markdown files
+
+[*.md]
+trim_trailing_whitespace = false
+
+# Window script files
+
+[*.{bat,cmd,ps1}]
+end_of_line = crlf
+
+# Linux script files
+
+[*.sh]
+end_of_line = lf
+
+# Default .NET code style severities
+
+[*.{cs}]
+dotnet_analyzer_diagnostic.severity = warning
