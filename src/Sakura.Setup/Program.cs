@@ -27,6 +27,8 @@ file sealed partial class Program : AsyncCommand<Program.Settings>
     public const string Name = "sdl";
     public const string Description = "Install SDL";
 
+    private const string Version = "3.2.8";
+
     private readonly string _workingDirectory;
     private readonly string _installPath;
 
@@ -45,7 +47,7 @@ file sealed partial class Program : AsyncCommand<Program.Settings>
             return 0;
         }
 
-        Result result = await InstallSDLAsync(settings).ConfigureAwait(false);
+        Result result = await InstallSDLAsync().ConfigureAwait(false);
 
         if (!result.IsSuccess)
         {
@@ -57,13 +59,13 @@ file sealed partial class Program : AsyncCommand<Program.Settings>
         return 0;
     }
 
-    private ValueTask<Result> InstallSDLAsync(Settings settings)
+    private ValueTask<Result> InstallSDLAsync()
     {
-        Uri download = new($"https://github.com/libsdl-org/SDL/releases/download/release-{settings.Version}/SDL3-{settings.Version}-win32-x64.zip");
+        Uri download = new($"https://github.com/libsdl-org/SDL/releases/download/release-{Version}/SDL3-{Version}-win32-x64.zip");
 
         AnsiConsole.MarkupLine("[cyan]Installing SDL...[/]");
 
-        string file = $"{Path.Combine(_workingDirectory, $"SDL3-{settings.Version}")}.zip";
+        string file = $"{Path.Combine(_workingDirectory, $"SDL3-{Version}")}.zip";
         DownloadFile handler = new(download);
 
         handler.Next(new ExtractFile(_workingDirectory))
@@ -74,11 +76,6 @@ file sealed partial class Program : AsyncCommand<Program.Settings>
 
     internal sealed class Settings : CommandSettings
     {
-        [CommandOption("-v|--version")]
-        [Description("SDL3 version to install")]
-        [DefaultValue("3.2.8")]
-        public required string Version { get; init; }
-
         [CommandOption("-f|--force")]
         [Description("Indicating whether to force an installation")]
         public bool Force { get; init; }

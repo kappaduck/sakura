@@ -19,7 +19,7 @@ internal sealed class MoveDllFiles(string installPath) : FileHandler
             foreach (FileInfo sourceFile in source.EnumerateFiles("*.dll", SearchOption.AllDirectories))
             {
                 string destination = Path.Combine(installPath, sourceFile.Name);
-                sourceFile.MoveTo(destination);
+                sourceFile.MoveTo(destination, overwrite: true);
             }
 
             source.Delete(recursive: true);
