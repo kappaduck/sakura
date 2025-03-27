@@ -16,4 +16,9 @@
   <ItemGroup Label="Common packages">
     <PackageVersion Include="DotNet.ReproducibleBuilds" Version="1.2.25" />
   </ItemGroup>
+
+  <ItemGroup Label="Setup packages">
+    <PackageVersion Include="Spectre.Console.Analyzer" Version="1.0.0" />
+    <PackageVersion Include="Spectre.Console.Cli" Version="0.49.2-preview.0.76" />
+  </ItemGroup>
 </Project>
