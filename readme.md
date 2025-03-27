@@ -51,6 +51,22 @@ To build Sakura from source, you will need the following tools installed:
 
 > The SDK includes everything you need to build and run .NET applications on your machine.
 
+### Dependencies
+
+You can install the required dependencies using the following command:
+
+```bash
+./setup.bat
+```
+
+> This script download and install the latest SDL3 version based on the [Sakura & SDL3 compatibility](#sakura--sdl3-compatibility) table.
+
+You can display all available options by running the following command:
+
+```bash
+./setup.bat --help
+```
+
 ## Credits
 
 Sakura leverages and draws inspiration from the following projects:
