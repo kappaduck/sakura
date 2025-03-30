@@ -13,7 +13,7 @@ jobs:
     name: Build
     runs-on: windows-latest
     env:
-      project: ./src/Sakura/Sakura.csproj
+      project: ./src/KappaDuck.Sakura/KappaDuck.Sakura.csproj
 
     steps:
       - name: Checkout repository
@@ -32,14 +32,14 @@ jobs:
           dotnet-version: 10.0.x
           dotnet-quality: preview
 
-      - name: Restore dependencies
-        run: dotnet restore
-
-      - name: Build
-        run: dotnet build --configuration release --no-restore
-
       - name: Setup SDL3
         run: ./setup.bat
+
+      - name: Restore dependencies
+        run: dotnet restore ${{ env.project }}
+
+      - name: Build
+        run: dotnet build ${{ env.project }} --configuration release --no-restore
 
       - name: Package
         run: dotnet pack ${{ env.project }} --configuration release --no-build --no-restore --output ./artifacts -p:PackageVersion=${{ env.version }}
@@ -48,7 +48,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: sakura
-          path: ./artifacts/Sakura.*.nupkg
+          path: ./artifacts/KappaDuck.Sakura.*.nupkg
 
   deploy:
     name: Deploy

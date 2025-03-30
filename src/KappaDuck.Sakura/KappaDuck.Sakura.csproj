@@ -25,6 +25,11 @@
     <None Include="$(MSBuildStartupDirectory)\$(PackageIcon)" Pack="true" PackagePath="" Visible="false" />
   </ItemGroup>
 
+  <ItemGroup Label="Files to include into the package">
+    <None Include="$(MSBuildStartupDirectory)\SDL3\*.dll" Pack="true" PackagePath="build\" IncludeInPackage="false" Visible="false" />
+    <None Include="$(MSBuildStartupDirectory)\$(MSBuildProjectName).targets" Pack="true" PackagePath="build\" IncludeInPackage="false" Visible="false" />
+  </ItemGroup>
+
   <ItemGroup Label="Enabling reproducible builds">
     <PackageReference Include="DotNet.ReproducibleBuilds" PrivateAssets="all" IncludeAssets="$(IncludeAssets)" />
   </ItemGroup>

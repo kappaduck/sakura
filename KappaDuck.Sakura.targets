@@ -1,0 +1,6 @@
+<Project>
+  <ItemGroup>
+    <SDL3 Include="$(MSBuildThisFileDirectory)*.dll" Condition="$([System.OperatingSystem]::IsWindows())" Visible="false" />
+    <None Include="@(SDL3)" Link="%(FileName)%(Extension)" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+  </ItemGroup>
+</Project>
