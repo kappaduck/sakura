@@ -1,0 +1,66 @@
+name: Publish Sakura
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  build:
+    name: Build
+    runs-on: windows-latest
+    env:
+      project: ./src/Sakura/Sakura.csproj
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Get version
+        shell: pwsh
+        run: |
+          $tag = "${{ github.event.release.tag_name }}"
+          $version = $tag -replace '^v', ''
+          echo "version=$version" >> $env:GITHUB_ENV
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+          dotnet-quality: preview
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration release --no-restore
+
+      - name: Setup SDL3
+        run: ./setup.bat
+
+      - name: Package
+        run: dotnet pack ${{ env.project }} --configuration release --no-build --no-restore --output ./artifacts -p:PackageVersion=${{ env.version }}
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sakura
+          path: ./artifacts/Sakura.*.nupkg
+
+  deploy:
+    name: Deploy
+    runs-on: windows-latest
+    needs: build
+    environment: production
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: sakura
+
+      - name: Publish to NuGet
+        run: dotnet nuget push ./*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
