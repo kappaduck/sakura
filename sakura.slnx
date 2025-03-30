@@ -7,6 +7,7 @@
     <File Path=".github/ISSUE_TEMPLATE/bug.yml" />
     <File Path=".github/ISSUE_TEMPLATE/config.yml" />
     <File Path=".github/ISSUE_TEMPLATE/feature.yml" />
+    <File Path=".github/ISSUE_TEMPLATE/task.yml" />
   </Folder>
   <Folder Name="/configurations/" Id="02ea681e-c7d8-13c7-8484-4ac65e1b71e8">
     <File Path=".config/stylecop.json" />
@@ -15,6 +16,7 @@
     <File Path=".gitignore" />
     <File Path="directory.build.props" />
     <File Path="directory.packages.props" />
+    <File Path="KappaDuck.Sakura.targets" />
     <File Path="nuget.config" />
   </Folder>
   <Folder Name="/docs/" Id="3f7cd2c9-9b09-4bac-8ca2-b7f2f1246ae6">

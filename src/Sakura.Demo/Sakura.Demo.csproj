@@ -8,6 +8,10 @@
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
   </PropertyGroup>
 
+  <ItemGroup Label="Link SDL3">
+    <None Include="$(MSBuildStartupDirectory)\SDL3\*.dll" Link="%(FileName)%(Extension)" CopyToOutputDirectory="PreserveNewest" Visible="false" Condition="$([System.OperatingSystem]::IsWindows())" />
+  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\KappaDuck.Sakura\KappaDuck.Sakura.csproj" />
   </ItemGroup>
