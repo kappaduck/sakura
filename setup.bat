@@ -2,6 +2,6 @@
 
 set setupPath=.\src\Sakura.Setup\Sakura.Setup.csproj
 
-dotnet run --project %setupPath% -- sdl %*
+dotnet run --project %setupPath% --configuration release -- sdl %*
 
 exit /b %ERRORLEVEL%

@@ -35,6 +35,11 @@
     <File Path="setup.bat" />
     <Project Path="src/Sakura.Setup/Sakura.Setup.csproj" Id="9096a2c1-5611-4ebf-8bfc-6af4362de327" />
   </Folder>
+  <Folder Name="/workflows/" Id="d5737d83-1e05-4ca3-9b7b-1d3fd98d3e66">
+    <File Path=".github/workflows/codeql.yml" />
+    <File Path=".github/workflows/nuget.yml" />
+    <File Path=".github/workflows/pull-request.yml" />
+  </Folder>
   <Project Path="src/KappaDuck.Sakura/KappaDuck.Sakura.csproj" Id="9b63404d-a6f9-47c1-bb70-a53351c12345" />
   <Project Path="src/Sakura.Demo/Sakura.Demo.csproj" Id="6f537300-e7f3-450c-be19-cd4e4f1d2a96" />
 </Solution>
