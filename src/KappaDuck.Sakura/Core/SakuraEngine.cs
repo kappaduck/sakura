@@ -13,6 +13,14 @@ namespace KappaDuck.Sakura.Core;
 /// </summary>
 public sealed partial class SakuraEngine : IDisposable
 {
+    private const string IdentifierProperty = "SDL.app.metadata.identifier";
+    private const string NameProperty = "SDL.app.metadata.name";
+    private const string VersionProperty = "SDL.app.metadata.version";
+    private const string AuthorProperty = "SDL.app.metadata.creator";
+    private const string CopyrightProperty = "SDL.app.metadata.copyright";
+    private const string UrlProperty = "SDL.app.metadata.url";
+    private const string TypeProperty = "SDL.app.metadata.type";
+
     private static readonly Lock _lock = new();
 
     private static SakuraEngine? _instance;
@@ -76,7 +84,7 @@ public sealed partial class SakuraEngine : IDisposable
         => (_subSystems & subSystem) == subSystem;
 
     /// <summary>
-    /// Initialize the engine with the specified <see cref="SubSystem"/>.
+    /// Initialize the engine with the specified <see cref="SubSystem"/> and optional <see cref="AppMetadata"/>.
     /// </summary>
     /// <remarks>
     /// Initialized subsystems are stored and will be uninitialized on <see cref="Dispose" />
@@ -84,14 +92,16 @@ public sealed partial class SakuraEngine : IDisposable
     /// You can initialize the same subsystem multiple times. It will only initializes once.
     /// </remarks>
     /// <param name="subSystem">The subsystem to initialize.</param>
+    /// <param name="metadata">The metadata of the application.</param>
     /// <returns>An instance of <see cref="SakuraEngine"/>.</returns>
     /// <exception cref="SakuraNativeException">Failed to initialize the subsystem.</exception>
-    public static SakuraEngine Init(SubSystem subSystem)
+    public static SakuraEngine Init(SubSystem subSystem, AppMetadata? metadata = null)
     {
         lock (_lock)
         {
             _instance ??= new SakuraEngine();
 
+            SetAppMetadata(metadata);
             InternalInit(subSystem);
 
             return _instance;
@@ -102,7 +112,7 @@ public sealed partial class SakuraEngine : IDisposable
     /// Initialize specific subsystems.
     /// </summary>
     /// <remarks>
-    /// You should call <see cref="Init(SubSystem)"/> before using this method to initialize the engine.
+    /// You should call <see cref="Init(SubSystem, AppMetadata?)"/> before using this method to initialize the engine.
     /// </remarks>
     /// <param name="subSystem">The subsystem to initialize.</param>
     /// <exception cref="SakuraException">The engine is not initialized.</exception>
@@ -126,7 +136,7 @@ public sealed partial class SakuraEngine : IDisposable
     /// Quit the specified <see cref="SubSystem"/>.
     /// </summary>
     /// <remarks>
-    /// <para>You should call <see cref="Init(SubSystem)"/> before using this method to initialize the engine.</para>
+    /// <para>You should call <see cref="Init(SubSystem, AppMetadata?)"/> before using this method to initialize the engine.</para>
     /// <para>You can shut down the same subsystem multiple times. It will only shut down once.</para>
     /// You still need to call <see cref="Dispose" /> or <see langword="using"/> even if you close all subsystems.
     /// </remarks>
@@ -147,6 +157,12 @@ public sealed partial class SakuraEngine : IDisposable
         }
     }
 
+    private static void Cleanup()
+    {
+        _instance = null;
+        _subSystems = SubSystem.None;
+    }
+
     private static void InternalInit(SubSystem subSystem)
     {
         if (Has(subSystem))
@@ -162,10 +178,31 @@ public sealed partial class SakuraEngine : IDisposable
         _subSystems |= subSystem;
     }
 
-    private static void Cleanup()
+    private static void SetAppMetadata(AppMetadata? metadata)
     {
-        _instance = null;
-        _subSystems = SubSystem.None;
+        if (metadata is null)
+            return;
+
+        if (!string.IsNullOrEmpty(metadata.Id))
+            SDL_SetAppMetadataProperty(IdentifierProperty, metadata.Id);
+
+        if (!string.IsNullOrEmpty(metadata.Name))
+            SDL_SetAppMetadataProperty(NameProperty, metadata.Name);
+
+        if (!string.IsNullOrEmpty(metadata.Version))
+            SDL_SetAppMetadataProperty(VersionProperty, metadata.Version);
+
+        if (!string.IsNullOrEmpty(metadata.Author))
+            SDL_SetAppMetadataProperty(AuthorProperty, metadata.Author);
+
+        if (!string.IsNullOrEmpty(metadata.Copyright))
+            SDL_SetAppMetadataProperty(CopyrightProperty, metadata.Copyright);
+
+        if (metadata.Url is not null)
+            SDL_SetAppMetadataProperty(UrlProperty, metadata.Url.ToString());
+
+        if (!string.IsNullOrEmpty(metadata.Type))
+            SDL_SetAppMetadataProperty(TypeProperty, metadata.Type);
     }
 
     private static void ThrowIfInstanceNull()
@@ -173,22 +210,27 @@ public sealed partial class SakuraEngine : IDisposable
 
     [LibraryImport(SDLNative.LibraryName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    internal static partial ulong SDL_GetTicks();
+    private static partial ulong SDL_GetTicks();
 
     [LibraryImport(SDLNative.LibraryName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    internal static partial int SDL_GetVersion();
+    private static partial int SDL_GetVersion();
 
     [LibraryImport(SDLNative.LibraryName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    [return: MarshalAs(UnmanagedType.I1)]
-    internal static partial bool SDL_InitSubSystem(SubSystem subSystem);
+    [return: MarshalAs(UnmanagedType.U1)]
+    private static partial bool SDL_InitSubSystem(SubSystem subSystem);
 
     [LibraryImport(SDLNative.LibraryName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    internal static partial void SDL_QuitSubSystem(SubSystem subSystem);
+    private static partial void SDL_QuitSubSystem(SubSystem subSystem);
 
     [LibraryImport(SDLNative.LibraryName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    internal static partial void SDL_Quit();
+    private static partial void SDL_Quit();
+
+    [LibraryImport(SDLNative.LibraryName, StringMarshalling = StringMarshalling.Utf8)]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+    [return: MarshalAs(UnmanagedType.U1)]
+    private static partial bool SDL_SetAppMetadataProperty(string name, string value);
 }
