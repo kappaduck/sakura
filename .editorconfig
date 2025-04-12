@@ -12,6 +12,13 @@ trim_trailing_whitespace = true
 [*.csproj]
 indent_size = 2
 
+# C# files
+
+[*.{cs}]
+dotnet_sort_system_directives_first = false
+dotnet_analyzer_diagnostic.severity = warning
+file_header_template = Copyright (c) KappaDuck. All rights reserved.\nThe source code is licensed under MIT License.
+
 # Configuration files
 
 [*.{config,nuspec,props,targets,xml}]
@@ -41,8 +48,3 @@ end_of_line = crlf
 
 [*.sh]
 end_of_line = lf
-
-# Default .NET code style severities
-
-[*.{cs}]
-dotnet_analyzer_diagnostic.severity = warning

@@ -11,8 +11,7 @@
     <IncludedAssets>runtime;build;native;contentfiles;analyzers</IncludedAssets>
   </PropertyGroup>
 
-  <ItemGroup Label="Link and configure analyzer rules">
-    <GlobalAnalyzerConfigFiles Include="$(MSBuildStartupDirectory)\rules\*.editorconfig" />
-    <AdditionalFiles Include="$(MSBuildStartupDirectory)\.config\stylecop.json" Link="stylecop.json" />
+    <ItemGroup Label="Configure analyzer rules">
+    <GlobalAnalyzerConfigFiles Include="..\..\rules\*.editorconfig" />
   </ItemGroup>
 </Project>

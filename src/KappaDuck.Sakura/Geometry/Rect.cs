@@ -335,10 +335,10 @@ public struct Rect(float x, float y, float width, float height) : IEquatable<Rec
         if (IsEmpty && other.IsEmpty)
             return true;
 
-        return FloatingPoint.IsNearlyZero(X - other.X)
-            && FloatingPoint.IsNearlyZero(Y - other.Y)
-            && FloatingPoint.IsNearlyZero(Width - other.Width)
-            && FloatingPoint.IsNearlyZero(Height - other.Height);
+        return Math.IsNearlyZero(X - other.X)
+            && Math.IsNearlyZero(Y - other.Y)
+            && Math.IsNearlyZero(Width - other.Width)
+            && Math.IsNearlyZero(Height - other.Height);
     }
 
     /// <inheritdoc/>

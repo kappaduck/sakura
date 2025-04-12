@@ -11,7 +11,7 @@ internal static partial class SDLNative
     internal const string LibraryName = "SDL3";
 
     internal static unsafe void Free<T>(T* memory) where T : unmanaged
-    => Free((nint)memory);
+        => Free((nint)memory);
 
     internal static unsafe void Free<T>(T** memory) where T : unmanaged
         => Free((nint)memory);

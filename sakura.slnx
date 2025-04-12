@@ -1,47 +1,7 @@
 <Solution>
-  <Folder Name="/.github/" Id="da5367aa-564f-4ae9-9db5-5f231fda7cae">
-    <File Path=".github/codeowners" />
-    <File Path=".github/dependabot.yml" />
+  <Folder Name="/src/">
+    <Project Path="src/KappaDuck.Sakura/KappaDuck.Sakura.csproj" />
+    <Project Path="src/Sakura.Demo/Sakura.Demo.csproj" />
+    <Project Path="src/Sakura.Setup/Sakura.Setup.csproj" />
   </Folder>
-  <Folder Name="/.github/templates/" Id="6a0c6af4-7d6e-4ef0-ab93-03376d9b6c18">
-    <File Path=".github/ISSUE_TEMPLATE/bug.yml" />
-    <File Path=".github/ISSUE_TEMPLATE/config.yml" />
-    <File Path=".github/ISSUE_TEMPLATE/feature.yml" />
-    <File Path=".github/ISSUE_TEMPLATE/task.yml" />
-  </Folder>
-  <Folder Name="/configurations/" Id="02ea681e-c7d8-13c7-8484-4ac65e1b71e8">
-    <File Path=".config/stylecop.json" />
-    <File Path=".editorconfig" />
-    <File Path=".gitattributes" />
-    <File Path=".gitignore" />
-    <File Path="directory.build.props" />
-    <File Path="directory.packages.props" />
-    <File Path="KappaDuck.Sakura.targets" />
-    <File Path="nuget.config" />
-  </Folder>
-  <Folder Name="/docs/" Id="3f7cd2c9-9b09-4bac-8ca2-b7f2f1246ae6">
-    <File Path="changelog.md" />
-    <File Path="license" />
-    <File Path="readme.md" />
-  </Folder>
-  <Folder Name="/rules/" Id="edd68b85-19ce-4b42-b50b-c659146b76e4">
-    <File Path="rules/code.style.editorconfig" />
-    <File Path="rules/disabled.editorconfig" />
-    <File Path="rules/meziantou.editorconfig" />
-    <File Path="rules/roslynator.editorconfig" />
-    <File Path="rules/sonar.editorconfig" />
-    <File Path="rules/stylecop.editorconfig" />
-    <File Path="rules/underscore.editorconfig" />
-  </Folder>
-  <Folder Name="/setup/" Id="66d5ec60-2a1f-4cf4-bcda-108ed8211fb7">
-    <File Path="setup.bat" />
-    <Project Path="src/Sakura.Setup/Sakura.Setup.csproj" Id="9096a2c1-5611-4ebf-8bfc-6af4362de327" />
-  </Folder>
-  <Folder Name="/workflows/" Id="d5737d83-1e05-4ca3-9b7b-1d3fd98d3e66">
-    <File Path=".github/workflows/codeql.yml" />
-    <File Path=".github/workflows/nuget.yml" />
-    <File Path=".github/workflows/pull-request.yml" />
-  </Folder>
-  <Project Path="src/KappaDuck.Sakura/KappaDuck.Sakura.csproj" Id="9b63404d-a6f9-47c1-bb70-a53351c12345" />
-  <Project Path="src/Sakura.Demo/Sakura.Demo.csproj" Id="6f537300-e7f3-450c-be19-cd4e4f1d2a96" />
 </Solution>
