@@ -105,7 +105,7 @@ public readonly struct Angle :
     /// <returns>The quotient of the angle and the scalar.</returns>
     public static Angle operator /(Angle left, float right)
     {
-        FloatingPoint.ThrowIfDivideByZero(right);
+        Math.ThrowIfDivideByZero(right);
 
         return new(left.Radians / right);
     }
@@ -214,7 +214,7 @@ public readonly struct Angle :
     /// </summary>
     /// <param name="other">The angle to compare.</param>
     /// <returns><see langword="true"/> if the angles are equal; otherwise, <see langword="false"/>.</returns>
-    public readonly bool Equals(Angle other) => FloatingPoint.IsNearlyZero(Radians - other.Radians);
+    public readonly bool Equals(Angle other) => Math.IsNearlyZero(Radians - other.Radians);
 
     /// <inheritdoc/>
     public override readonly bool Equals([NotNullWhen(true)] object? obj)

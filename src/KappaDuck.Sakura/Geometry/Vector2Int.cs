@@ -136,7 +136,7 @@ public struct Vector2Int(int x, int y) :
     /// <returns>The division of the vector and the scalar.</returns>
     public static Vector2Int operator /(Vector2Int left, int right)
     {
-        FloatingPoint.ThrowIfDivideByZero(right);
+        Math.ThrowIfDivideByZero(right);
 
         return new(left.X / right, left.Y / right);
     }

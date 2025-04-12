@@ -5,7 +5,8 @@ updates:
     target-branch: main
     directory: /
     schedule:
-      interval: daily
+      interval: weekly
+      day: tuesday
     commit-message:
       prefix: .NET packages
     labels: [dependencies]

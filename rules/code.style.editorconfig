@@ -77,3 +77,8 @@ dotnet_diagnostic.CS8524.severity = none
 # Always use 'new(...)'
 # https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/ide0090
 csharp_style_implicit_object_creation_when_type_is_apparent = true:warning
+
+# IDE0160: Convert to block scoped namespace
+# Always use file scoped namespace
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/ide0160
+csharp_style_namespace_declarations = file_scoped

@@ -7,27 +7,26 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
-  <PropertyGroup Label="Package info">
-    <Title>$(MSBuildProjectName)</Title>
+<PropertyGroup Label="Package info">
     <Authors>KappaDuck</Authors>
     <Company>@(Authors)</Company>
     <Copyright>Copyright © KappaDuck $([System.DateTime]::Now.Year)</Copyright>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
     <PackageLicenseFile>license</PackageLicenseFile>
     <PackageIcon>icon.png</PackageIcon>
-    <Description>$(MSBuildProjectName) is a NuGet package build on top of SDL3, designed to provide a clean and modern .NET 9.0+ API.$(MSBuildProjectName) ensures high performance and flexibility for game development and multimedia applications, while abstracting away the low-level details of SDL3 API.</Description>
+    <Description>Sakura is a NuGet package build on top of SDL3, designed to provide a clean and modern .NET 9.0+ API. Sakura ensures high performance and flexibility for game development and multimedia applications, while abstracting away the low-level details of SDL3 API.</Description>
     <PackageTags>SDL;SDL3;GameEngine;engine;CSharp;Game;Multimedia</PackageTags>
   </PropertyGroup>
 
-  <ItemGroup Label="Common files to include into the package">
-    <None Include="$(MSBuildStartupDirectory)\$(PackageReadmeFile)" Pack="true" PackagePath="" Visible="false" />
-    <None Include="$(MSBuildStartupDirectory)\$(PackageLicenseFile)" Pack="true" PackagePath="" Visible="false" />
-    <None Include="$(MSBuildStartupDirectory)\$(PackageIcon)" Pack="true" PackagePath="" Visible="false" />
+    <ItemGroup Label="Common files to include into the package">
+    <None Include="..\..\$(PackageReadmeFile)" Pack="true" PackagePath="" Visible="false" />
+    <None Include="..\..\$(PackageLicenseFile)" Pack="true" PackagePath="" Visible="false" />
+    <None Include="..\..\$(PackageIcon)" Pack="true" PackagePath="" Visible="false" />
   </ItemGroup>
 
   <ItemGroup Label="Files to include into the package">
-    <None Include="$(MSBuildStartupDirectory)\SDL3\*.dll" Pack="true" PackagePath="build\" IncludeInPackage="false" Visible="false" />
-    <None Include="$(MSBuildStartupDirectory)\$(MSBuildProjectName).targets" Pack="true" PackagePath="build\" IncludeInPackage="false" Visible="false" />
+    <None Include="..\..\SDL3\*.dll" Pack="true" PackagePath="build\" IncludeInPackage="false" Visible="false" />
+    <None Include="..\..\$(MSBuildProjectName).targets" Pack="true" PackagePath="build\" IncludeInPackage="false" Visible="false" />
   </ItemGroup>
 
   <ItemGroup Label="Enabling reproducible builds">

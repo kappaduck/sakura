@@ -50,7 +50,7 @@ public struct Vector2(float x, float y) :
     /// <summary>
     /// Gets a value indicating whether the vector is normalized.
     /// </summary>
-    public readonly bool IsNormalized => FloatingPoint.IsNearlyZero(MagnitudeSquared - 1f);
+    public readonly bool IsNormalized => Math.IsNearlyZero(MagnitudeSquared - 1f);
 
     /// <summary>
     /// Gets a value indicating whether the vector is zero.
@@ -172,7 +172,7 @@ public struct Vector2(float x, float y) :
     /// <returns>The division of the vector and the scalar.</returns>
     public static Vector2 operator /(Vector2 left, float right)
     {
-        FloatingPoint.ThrowIfDivideByZero(right);
+        Math.ThrowIfDivideByZero(right);
 
         return new(left.X / right, left.Y / right);
     }
@@ -298,7 +298,7 @@ public struct Vector2(float x, float y) :
         Vector2 vector = target - current;
         float magnitude = vector.Magnitude;
 
-        if (magnitude <= maxDistanceDelta || FloatingPoint.IsNearlyZero(magnitude))
+        if (magnitude <= maxDistanceDelta || Math.IsNearlyZero(magnitude))
             return target;
 
         return current + (vector / magnitude * maxDistanceDelta);
@@ -427,8 +427,8 @@ public struct Vector2(float x, float y) :
     /// <returns><see langword="true"/> if the vectors are equal; otherwise, <see langword="false"/>.</returns>
     public readonly bool Equals(Vector2 other)
     {
-        return FloatingPoint.IsNearlyZero(X - other.X)
-            && FloatingPoint.IsNearlyZero(Y - other.Y);
+        return Math.IsNearlyZero(X - other.X)
+            && Math.IsNearlyZero(Y - other.Y);
     }
 
     /// <inheritdoc/>
