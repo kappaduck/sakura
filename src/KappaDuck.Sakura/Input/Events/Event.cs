@@ -11,6 +11,9 @@ namespace KappaDuck.Sakura.Input.Events;
 [StructLayout(LayoutKind.Explicit)]
 public struct Event
 {
+    [FieldOffset(0)]
+    private unsafe fixed byte _padding[128];
+
     /// <summary>
     /// The type of the event.
     /// </summary>
@@ -23,6 +26,27 @@ public struct Event
     [FieldOffset(0)]
     public readonly DisplayEvent Display;
 
+    /// <summary>
+    /// The mouse button event data.
+    /// </summary>
     [FieldOffset(0)]
-    private unsafe fixed byte _padding[128];
+    public readonly MouseButtonEvent Mouse;
+
+    /// <summary>
+    /// The mouse device event data.
+    /// </summary>
+    [FieldOffset(0)]
+    public readonly MouseDeviceEvent MouseDevice;
+
+    /// <summary>
+    /// The mouse motion event data.
+    /// </summary>
+    [FieldOffset(0)]
+    public readonly MouseMotionEvent Motion;
+
+    /// <summary>
+    /// The mouse wheel event data.
+    /// </summary>
+    [FieldOffset(0)]
+    public readonly MouseWheelEvent Wheel;
 }
