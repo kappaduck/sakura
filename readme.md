@@ -10,7 +10,7 @@ Below is a list of Sakura versions and the corresponding SDL3 versions they supp
 
 | Sakura Version | SDL3 Version | SDL_image Version | SDL_ttf Version | SDL_mixer Version |
 | :------------: | :----------: | :---------------: | :-------------: | :---------------: |
-|   `>= 0.1.0`   |   `3.2.8`    |   `unsupported`   |  `unsupported`  |   `unsupported`   |
+|   `>= 0.1.0`   |   `3.2.12`   |   `unsupported`   |  `unsupported`  |   `unsupported`   |
 
 > Support for SDL_image, SDL_ttf, and SDL_mixer is planned for future releases. Stay tuned!
 

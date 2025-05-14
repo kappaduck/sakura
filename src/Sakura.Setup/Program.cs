@@ -27,7 +27,7 @@ file sealed partial class Program : AsyncCommand<Program.Settings>
     public const string Name = "sdl";
     public const string Description = "Install SDL";
 
-    private const string Version = "3.2.8";
+    private const string Version = "3.2.12";
 
     private readonly string _workingDirectory;
     private readonly string _installPath;
