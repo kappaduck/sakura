@@ -27,6 +27,18 @@ public struct Event
     public readonly DisplayEvent Display;
 
     /// <summary>
+    /// The keyboard device event data.
+    /// </summary>
+    [FieldOffset(0)]
+    public readonly KeyboardDeviceEvent KeyboardDevice;
+
+    /// <summary>
+    /// The keyboard event data.
+    /// </summary>
+    [FieldOffset(0)]
+    public readonly KeyboardEvent Keyboard;
+
+    /// <summary>
     /// The mouse button event data.
     /// </summary>
     [FieldOffset(0)]
