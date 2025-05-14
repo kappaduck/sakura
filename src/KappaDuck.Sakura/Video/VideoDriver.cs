@@ -45,17 +45,14 @@ public static partial class VideoDriver
         return drivers;
     }
 
-    [LibraryImport(SDLNative.LibraryName)]
-    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+    [LibraryImport(SDLNative.LibraryName), UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     [return: MarshalUsing(typeof(SDLOwnedStringMarshaller))]
     private static partial string SDL_GetCurrentVideoDriver();
 
-    [LibraryImport(SDLNative.LibraryName)]
-    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+    [LibraryImport(SDLNative.LibraryName), UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     private static partial int SDL_GetNumVideoDrivers();
 
-    [LibraryImport(SDLNative.LibraryName)]
-    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+    [LibraryImport(SDLNative.LibraryName), UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     [return: MarshalUsing(typeof(SDLOwnedStringMarshaller))]
     private static partial string SDL_GetVideoDriver(int index);
 }

@@ -56,8 +56,7 @@ public sealed partial class PowerStatus
         return new PowerStatus(seconds == -1 ? null : seconds, percent == -1 ? null : percent, state);
     }
 
-    [LibraryImport(SDLNative.LibraryName)]
-    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+    [LibraryImport(SDLNative.LibraryName), UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     private static partial PowerState SDL_GetPowerInfo(out int seconds, out int percent);
 
     /// <summary>
