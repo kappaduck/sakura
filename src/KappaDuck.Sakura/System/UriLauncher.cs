@@ -30,8 +30,7 @@ public static partial class UriLauncher
     /// <inheritdoc cref="Open(string)"/>
     public static void Open(Uri uri) => Open(uri.ToString());
 
-    [LibraryImport(SDLNative.LibraryName, StringMarshalling = StringMarshalling.Utf8)]
-    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+    [LibraryImport(SDLNative.LibraryName, StringMarshalling = StringMarshalling.Utf8), UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     [return: MarshalAs(UnmanagedType.U1)]
     private static partial bool SDL_OpenURL(string url);
 }

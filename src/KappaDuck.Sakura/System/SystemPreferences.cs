@@ -41,22 +41,18 @@ public static partial class SystemPreferences
     /// </summary>
     public static SystemTheme Theme => SDL_GetSystemTheme();
 
-    [LibraryImport(SDLNative.LibraryName)]
-    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+    [LibraryImport(SDLNative.LibraryName), UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     [return: MarshalAs(UnmanagedType.U1)]
     private static partial bool SDL_DisableScreenSaver();
 
-    [LibraryImport(SDLNative.LibraryName)]
-    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+    [LibraryImport(SDLNative.LibraryName), UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     [return: MarshalAs(UnmanagedType.U1)]
     private static partial bool SDL_EnableScreenSaver();
 
-    [LibraryImport(SDLNative.LibraryName)]
-    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+    [LibraryImport(SDLNative.LibraryName), UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     private static partial SystemTheme SDL_GetSystemTheme();
 
-    [LibraryImport(SDLNative.LibraryName)]
-    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+    [LibraryImport(SDLNative.LibraryName), UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     [return: MarshalAs(UnmanagedType.U1)]
     private static partial bool SDL_ScreenSaverEnabled();
 }
