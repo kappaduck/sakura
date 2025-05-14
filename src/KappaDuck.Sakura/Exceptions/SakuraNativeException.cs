@@ -27,6 +27,8 @@ public sealed partial class SakuraNativeException : SakuraException
 
     internal static void ThrowIfFailed(bool result) => ThrowIf(!result);
 
+    internal static void ThrowIfNegative(int value) => ThrowIf(int.IsNegative(value));
+
     internal static unsafe void ThrowIfNull<T>(T* value) where T : unmanaged
         => ThrowIf(value is null);
 
